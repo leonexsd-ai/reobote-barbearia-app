@@ -24,7 +24,7 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
+//teste de comunicação com o git
 @Preview(showBackground = true)
 @Composable
 fun MainActivityPreview() {
