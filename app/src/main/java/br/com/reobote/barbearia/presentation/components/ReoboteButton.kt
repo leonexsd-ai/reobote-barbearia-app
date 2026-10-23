@@ -19,6 +19,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import br.com.reobote.barbearia.presentation.theme.BorderOutline
@@ -48,7 +49,7 @@ fun ReoboteButton(
 ) {
     val buttonShape = ReoboteTheme.shapes.medium
 
-    val contentPadding = PaddingValues(horizontal = 20.dp, vertical = 14.dp)
+    val contentPadding = PaddingValues(horizontal = 12.dp, vertical = 12.dp)
 
     val contentLambda: @Composable () -> Unit = {
         if (isLoading) {
@@ -69,14 +70,16 @@ fun ReoboteButton(
             ) {
                 if (leadingIcon != null) {
                     leadingIcon()
-                    Spacer(modifier = Modifier.width(8.dp))
+                    Spacer(modifier = Modifier.width(6.dp))
                 }
                 Text(
                     text = text,
                     style = ReoboteTheme.typography.titleMedium,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
                 )
                 if (trailingIcon != null) {
-                    Spacer(modifier = Modifier.width(8.dp))
+                    Spacer(modifier = Modifier.width(6.dp))
                     trailingIcon()
                 }
             }

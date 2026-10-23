@@ -31,6 +31,8 @@ import br.com.reobote.barbearia.presentation.theme.SurfaceContainerDark
 import br.com.reobote.barbearia.presentation.theme.WarningAmber
 import java.util.Locale
 
+import androidx.compose.ui.text.style.TextOverflow
+
 @Composable
 fun BarberAvatar(
     name: String,
@@ -90,6 +92,7 @@ fun BarberAvatar(
             style = ReoboteTheme.typography.labelLarge,
             color = if (isSelected) NeonGreen else Platinum100,
             maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
         )
 
         Spacer(modifier = Modifier.height(2.dp))

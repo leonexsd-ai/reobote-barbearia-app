@@ -36,6 +36,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -53,7 +54,6 @@ import br.com.reobote.barbearia.presentation.theme.NeonGreen
 import br.com.reobote.barbearia.presentation.theme.OnNeonGreen
 import br.com.reobote.barbearia.presentation.theme.Platinum100
 import br.com.reobote.barbearia.presentation.theme.Platinum400
-import br.com.reobote.barbearia.presentation.theme.Platinum500
 import br.com.reobote.barbearia.presentation.theme.ReoboteTheme
 import br.com.reobote.barbearia.presentation.theme.SurfaceContainerDark
 import br.com.reobote.barbearia.presentation.theme.SurfaceVariantDark
@@ -243,7 +243,7 @@ private fun HomeHeaderSection(
 
                 Spacer(modifier = Modifier.width(12.dp))
 
-                Column {
+                Column(modifier = Modifier.weight(1f, fill = false)) {
                     Text(
                         text = "Bem-vindo de volta,",
                         style = ReoboteTheme.typography.labelSmall,
@@ -253,6 +253,8 @@ private fun HomeHeaderSection(
                         text = "Olá, $userName",
                         style = ReoboteTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold),
                         color = Platinum100,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
                     )
                 }
             }
@@ -307,7 +309,7 @@ private fun QuickActionSection(
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    Column {
+                    Column(modifier = Modifier.weight(1f)) {
                         Text(
                             text = "ÚLTIMO CORTE REALIZADO",
                             style = ReoboteTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
@@ -318,13 +320,19 @@ private fun QuickActionSection(
                             text = "Degradê + Barba",
                             style = ReoboteTheme.typography.titleLarge.copy(fontWeight = FontWeight.ExtraBold),
                             color = OnNeonGreen,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis,
                         )
                         Text(
                             text = "Com Carlos Barber • R$ 75,00",
                             style = ReoboteTheme.typography.bodySmall,
                             color = OnNeonGreen.copy(alpha = 0.85f),
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis,
                         )
                     }
+
+                    Spacer(modifier = Modifier.width(8.dp))
 
                     Text(text = "✂️", fontSize = 36.sp)
                 }
@@ -385,6 +393,7 @@ private fun BannersSection() {
                             text = banner.tag,
                             style = ReoboteTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
                             color = NeonGreen,
+                            maxLines = 1,
                         )
                     }
 
@@ -394,6 +403,8 @@ private fun BannersSection() {
                         text = banner.title,
                         style = ReoboteTheme.typography.titleMedium,
                         color = Platinum100,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
                     )
 
                     Spacer(modifier = Modifier.height(4.dp))
@@ -402,6 +413,8 @@ private fun BannersSection() {
                         text = banner.description,
                         style = ReoboteTheme.typography.bodySmall,
                         color = Platinum400,
+                        maxLines = 2,
+                        overflow = TextOverflow.Ellipsis,
                     )
                 }
             }
@@ -439,11 +452,15 @@ private fun LocationShortcutSection(
                         text = "Reobote Barbearia - Matriz",
                         style = ReoboteTheme.typography.titleMedium,
                         color = Platinum100,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
                     )
                     Text(
                         text = "Av. Principal, 1000 - Centro, São Paulo - SP",
                         style = ReoboteTheme.typography.bodySmall,
                         color = Platinum400,
+                        maxLines = 2,
+                        overflow = TextOverflow.Ellipsis,
                     )
                 }
             }
@@ -488,37 +505,17 @@ private fun ServicesSection(
 
         Spacer(modifier = Modifier.height(12.dp))
 
-        // Grid 2 Columns
         Column(
-            verticalArrangement = Arrangement.spacedBy(12.dp),
+            verticalArrangement = Arrangement.spacedBy(10.dp),
         ) {
-            for (i in services.indices step 2) {
-                Row(
+            services.forEach { service ->
+                ServiceCard(
+                    name = service.name,
+                    price = service.price,
+                    duration = service.duration,
                     modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(12.dp),
-                ) {
-                    val first = services[i]
-                    ServiceCard(
-                        name = first.name,
-                        price = first.price,
-                        duration = first.duration,
-                        modifier = Modifier.weight(1f),
-                        onSelectToggle = { onServiceClick() },
-                    )
-
-                    if ((i + 1) < services.size) {
-                        val second = services[i + 1]
-                        ServiceCard(
-                            name = second.name,
-                            price = second.price,
-                            duration = second.duration,
-                            modifier = Modifier.weight(1f),
-                            onSelectToggle = { onServiceClick() },
-                        )
-                    } else {
-                        Spacer(modifier = Modifier.weight(1f))
-                    }
-                }
+                    onSelectToggle = { onServiceClick() },
+                )
             }
         }
     }

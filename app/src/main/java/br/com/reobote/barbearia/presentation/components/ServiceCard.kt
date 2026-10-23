@@ -20,6 +20,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
@@ -60,7 +61,7 @@ fun ServiceCard(
             // Service Image / Placeholder
             Box(
                 modifier = Modifier
-                    .size(72.dp)
+                    .size(56.dp)
                     .clip(ReoboteTheme.shapes.medium)
                     .background(SurfaceContainerDark),
                 contentAlignment = Alignment.Center,
@@ -77,6 +78,7 @@ fun ServiceCard(
                         text = name.take(2).uppercase(),
                         style = ReoboteTheme.typography.titleMedium,
                         color = NeonGreen,
+                        maxLines = 1,
                     )
                 }
             }
@@ -91,6 +93,8 @@ fun ServiceCard(
                     text = name,
                     style = ReoboteTheme.typography.titleMedium,
                     color = Platinum100,
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis,
                 )
 
                 Spacer(modifier = Modifier.height(4.dp))
@@ -99,16 +103,22 @@ fun ServiceCard(
                     text = duration,
                     style = ReoboteTheme.typography.bodySmall,
                     color = Platinum500,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
                 )
 
-                Spacer(modifier = Modifier.height(6.dp))
+                Spacer(modifier = Modifier.height(4.dp))
 
                 Text(
                     text = price,
                     style = ReoboteTheme.typography.titleSmall,
                     color = NeonGreen,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
                 )
             }
+
+            Spacer(modifier = Modifier.width(8.dp))
 
             // Selection Checkbox
             Checkbox(
