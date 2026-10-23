@@ -128,7 +128,16 @@ fun ReoboteNavGraph(
                 )
             }
             composable(Screen.Booking.route) {
-                BookingScreen()
+                BookingScreen(
+                    onNavigateToHome = {
+                        navController.navigate(Screen.Home.route) {
+                            popUpTo(Screen.Home.route) { inclusive = true }
+                        }
+                    },
+                    onBackClick = {
+                        navController.popBackStack()
+                    },
+                )
             }
             composable(Screen.Appointments.route) {
                 AppointmentsScreen()
