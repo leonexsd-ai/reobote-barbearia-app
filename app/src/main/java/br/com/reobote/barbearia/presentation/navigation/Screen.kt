@@ -16,4 +16,9 @@ sealed class Screen(val route: String) {
     object Profile : Screen("profile")
     object ReoboteClub : Screen("reobote_club")
     object Admin : Screen("admin")
+    object AdminDashboard : Screen("admin_dashboard")
+    object AdminTimeline : Screen("admin_timeline")
+    object AdminEquipe : Screen("admin_equipe")
+    object AdminServicos : Screen("admin_servicos")
+    object AccessDenied : Screen("access_denied")
 }

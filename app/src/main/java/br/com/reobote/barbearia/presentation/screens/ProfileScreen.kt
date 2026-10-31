@@ -55,7 +55,7 @@ fun ProfileScreen(
         ProfileOption("Meus Agendamentos", "Histórico e próximos cortes", "📅", onNavigateToAppointments),
         ProfileOption("Cartão Fidelidade", "7 de 10 selos acumulados", "🎯", onNavigateToLoyalty),
         ProfileOption("Clube Reobote", "Assinaturas e benefícios VIP", "👑", onNavigateToClub),
-        ProfileOption("Painel do Administrador", "Gestão da barbearia", "⚙️", onNavigateToAdmin),
+        ProfileOption("Painel de Gestão", "Métricas, agenda e equipe da barbearia", "👑", onNavigateToAdmin),
     )
 
     Column(

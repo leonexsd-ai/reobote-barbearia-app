@@ -185,7 +185,11 @@ fun ReoboteNavGraph(
                 )
             }
             composable(Screen.Admin.route) {
-                AdminScreen()
+                AdminScreen(
+                    onNavigateToHome = {
+                        navController.navigate(Screen.Home.route)
+                    },
+                )
             }
         }
     }

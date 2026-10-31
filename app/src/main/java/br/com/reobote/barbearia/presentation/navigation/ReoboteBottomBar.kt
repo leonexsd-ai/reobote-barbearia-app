@@ -6,6 +6,7 @@ import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -25,6 +26,7 @@ val bottomNavItems = listOf(
     BottomNavItem(Screen.Booking, "Agendar", "✂️"),
     BottomNavItem(Screen.Appointments, "Agenda", "📅"),
     BottomNavItem(Screen.Store, "Loja", "🛍️"),
+    BottomNavItem(Screen.Admin, "Painel", "👑"),
     BottomNavItem(Screen.Profile, "Perfil", "👤"),
 )
 
@@ -69,6 +71,8 @@ fun ReoboteBottomBar(
                         Text(
                             text = item.label,
                             style = ReoboteTheme.typography.labelSmall,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis,
                         )
                     },
                     colors = NavigationBarItemDefaults.colors(
