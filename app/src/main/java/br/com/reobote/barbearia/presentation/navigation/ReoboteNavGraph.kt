@@ -140,16 +140,49 @@ fun ReoboteNavGraph(
                 )
             }
             composable(Screen.Appointments.route) {
-                AppointmentsScreen()
+                AppointmentsScreen(
+                    onNavigateToBooking = {
+                        navController.navigate(Screen.Booking.route)
+                    },
+                )
             }
             composable(Screen.Loyalty.route) {
-                LoyaltyScreen()
+                LoyaltyScreen(
+                    onNavigateToBooking = {
+                        navController.navigate(Screen.Booking.route)
+                    },
+                )
+            }
+            composable(Screen.ReoboteClub.route) {
+                br.com.reobote.barbearia.presentation.screens.ReoboteClubScreen(
+                    onSelectPlan = {
+                        navController.navigate(Screen.Booking.route)
+                    },
+                )
             }
             composable(Screen.Store.route) {
                 StoreScreen()
             }
             composable(Screen.Profile.route) {
-                ProfileScreen()
+                ProfileScreen(
+                    onNavigateToAppointments = {
+                        navController.navigate(Screen.Appointments.route)
+                    },
+                    onNavigateToLoyalty = {
+                        navController.navigate(Screen.Loyalty.route)
+                    },
+                    onNavigateToClub = {
+                        navController.navigate(Screen.ReoboteClub.route)
+                    },
+                    onNavigateToAdmin = {
+                        navController.navigate(Screen.Admin.route)
+                    },
+                    onLogout = {
+                        navController.navigate(Screen.Welcome.route) {
+                            popUpTo(Screen.Home.route) { inclusive = true }
+                        }
+                    },
+                )
             }
             composable(Screen.Admin.route) {
                 AdminScreen()
